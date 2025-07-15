@@ -1,0 +1,918 @@
+/* 全局样式 */
+:root {
+    --primary-color: #1a2a36;
+    --secondary-color: #f8f9fa;
+    --accent-color: #ffc107;
+    --text-color: #212529;
+    --light-text: #f8f9fa;
+    --dark-bg: #0f1a24;
+    --max-content-width: 1400px;
+    --scroll-progress: 0%; /* 添加滚动进度变量 */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 共享背景容器 - 新增 */
+.shared-bg-container {
+    background-image: url('../images/AA.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.shared-bg-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+/* 导航栏样式 */
+#header {
+    padding: 15px 0;
+    z-index: 1000;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    background-color: transparent; /* 移除整个header的背景 */
+}
+
+.navbar {
+    padding: 0 30px;
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent; /* 确保navbar本身也是透明的 */
+}
+
+.logo {
+    height: 50px;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(26, 42, 54, 0.8); /* 只有中间导航部分有背景 */
+    border-radius: 50px;
+    padding: 10px 30px;
+}
+
+.nav-link {
+    color: var(--light-text) !important;
+    margin: 0 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-color) !important;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.account-link {
+    color: var(--light-text);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.account-link i {
+    margin-right: 5px;
+}
+
+.account-link:hover {
+    color: var(--accent-color);
+}
+
+/* 侧边导航 */
+.side-nav {
+    position: fixed;
+    left: 30px;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.side-nav::before {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.side-nav::after {
+    content: '';
+    position: absolute;
+    left: -15px;
+    top: 0;
+    height: var(--scroll-progress); /* 使用CSS变量控制高度 */
+    width: 2px;
+    background-color: var(--accent-color);
+    transition: height 0.3s ease;
+}
+
+.start-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    margin-bottom: 15px;
+    font-weight: 500;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: rotate(180deg);
+}
+
+.start-text a {
+    color: var(--light-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.start-text a:hover,
+.start-text a.active {
+    color: var(--accent-color);
+}
+
+.side-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.side-nav-list li {
+    margin: 15px 0;
+}
+
+.side-nav-list a {
+    color: var(--light-text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.side-nav-list a:hover,
+.side-nav-list li.active a {
+    color: var(--accent-color);
+}
+
+/* 社交媒体侧边栏 */
+.social-sidebar {
+    position: fixed;
+    right: 30px;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 100;
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-links li {
+    margin: 15px 0;
+}
+
+.social-links a {
+    color: var(--light-text);
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+/* 英雄区域 */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: var(--light-text);
+}
+
+.hero-section::before {
+    content: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding-left: 0;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%; /* 确保内容占满宽度 */
+}
+
+.hiking-guide {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.hiking-guide::before {
+    content: '';
+    position: absolute;
+    left: -60px;
+    top: 50%;
+    width: 50px;
+    height: 2px;
+    background-color: var(--accent-color);
+    display: none; /* 隐藏左侧的横线，因为现在是居中显示 */
+}
+
+/* 添加新的居中横线 */
+.hiking-guide::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    width: 50px;
+    height: 2px;
+    background-color: var(--accent-color);
+    transform: translateX(-50%);
+}
+
+.hero-title {
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    text-align: center;
+}
+
+.hero-title br {
+    display: block; /* 确保换行符生效 */
+}
+
+.welcome-text {
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+
+.scroll-down {
+    color: var(--accent-color);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.scroll-down i {
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+.scroll-down:hover {
+    color: #ffcc33; /* 稍微亮一点的黄色 */
+}
+
+.scroll-down:hover i {
+    transform: translateY(3px);
+}
+
+/* 登山者级别部分 */
+.hiker-level-section {
+    min-height: 100vh;
+    position: relative;
+    color: var(--light-text);
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.section-overlay {
+    width: 100%;
+    padding: 100px 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.hiker-level-section .container,
+.hiking-gear-section .container-fluid,
+.map-timing-section .container-fluid,
+.bottom-links-section .container-fluid {
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.hiker-content {
+    padding: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.section-number {
+    font-size: 180px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.1);
+    line-height: 1;
+    position: absolute;
+    top: -30px;
+    left: 0;
+    z-index: 0;
+}
+
+.get-started {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+.level-title {
+    font-size: 54px;
+    font-weight: 700;
+    color: var(--light-text);
+    margin-bottom: 30px;
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+}
+
+.level-description {
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.level-description p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+}
+
+.read-more-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.read-more-link i {
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+.read-more-link:hover {
+    color: var(--light-text);
+    text-decoration: none;
+}
+
+.read-more-link:hover i {
+    transform: translateX(5px);
+}
+
+.read-more-btn {
+    display: inline-flex;
+    align-items: center;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 17px;
+    position: relative;
+    z-index: 1;
+}
+
+.read-more-btn i {
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+    color: var(--light-text);
+    text-decoration: none;
+}
+
+.read-more-btn:hover i {
+    transform: translateX(5px);
+}
+
+.hiker-image-container {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    margin-right: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.hiker-image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* 登山装备部分 */
+.hiking-gear-section {
+    padding: 80px 0;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    position: relative;
+    overflow: hidden;
+}
+
+.gear-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    max-width: 450px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.gear-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.gear-content {
+    padding: 50px 80px;
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hiking-gear-section .section-number {
+    font-size: 300px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.05);
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 1;
+    margin: 0;
+}
+
+.hiking-gear-section .section-key-tag {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.hiking-gear-section .section-title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.hiking-gear-section .section-description {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    z-index: 2;
+    max-width: 95%;
+}
+
+.hiking-gear-section .read-more-container {
+    text-align: right;
+    position: relative;
+    z-index: 2;
+}
+
+/* 地图和时间部分 */
+.map-timing-section {
+    padding: 80px 0;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    position: relative;
+    overflow: hidden;
+}
+
+.map-content {
+    padding: 50px 80px;
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+}
+
+.map-timing-section .section-number {
+    font-size: 300px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.05);
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 1;
+    margin: 0;
+}
+
+.section-key-tag {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.yellow-line {
+    display: inline-block;
+    width: 50px;
+    height: 2px;
+    background-color: var(--accent-color);
+    margin-right: 15px;
+}
+
+.map-timing-section .section-title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.map-timing-section .section-description {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    z-index: 2;
+    max-width: 95%;
+}
+
+.read-more-container {
+    text-align: right;
+    position: relative;
+    z-index: 2;
+}
+
+.map-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    max-width: 450px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.map-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* 底部链接区域 */
+.bottom-links-section {
+    padding: 80px 0;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-to-top-container {
+    margin-bottom: 50px;
+}
+
+.back-to-top-btn {
+    color: var(--light-text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+.back-to-top-btn:hover {
+    color: var(--accent-color);
+}
+
+.explore-text {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 30px;
+}
+
+.links-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: var(--accent-color);
+}
+
+.bottom-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bottom-links-list li {
+    margin-bottom: 15px;
+}
+
+.bottom-links-list a {
+    color: var(--light-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.bottom-links-list a:hover {
+    color: var(--accent-color);
+}
+
+/* 页脚样式 */
+#footer {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 60px 0 30px;
+}
+
+.footer-logo {
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: var(--light-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+
+#footer .social-links {
+    display: flex;
+    margin-top: 20px;
+}
+
+#footer .social-links a {
+    margin-right: 15px;
+    color: var(--light-text);
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+#footer .social-links a:hover {
+    color: var(--accent-color);
+}
+
+/* 响应式样式 */
+@media (max-width: 1200px) {
+    :root {
+        --max-content-width: 1140px;
+    }
+    
+    .hiker-image-container {
+        margin-right: 0;
+        max-width: 400px;
+    }
+    
+    .gear-image, .map-image {
+        max-width: 400px;
+    }
+    
+    .map-timing-section .section-number {
+        font-size: 240px;
+    }
+    
+    .hiking-gear-section .section-number {
+        font-size: 240px;
+    }
+}
+
+@media (max-width: 991px) {
+    :root {
+        --max-content-width: 960px;
+    }
+    
+    .hero-title {
+        font-size: 48px;
+    }
+    
+    .welcome-text {
+        font-size: 30px;
+    }
+    
+    .level-title {
+        font-size: 42px;
+    }
+    
+    .side-nav, .social-sidebar {
+        display: none;
+    }
+    
+    .hero-content {
+        padding-left: 15px;
+    }
+    
+    .section-title {
+        font-size: 36px;
+    }
+    
+    .section-number {
+        font-size: 180px;
+        opacity: 0.1;
+    }
+    
+    .gear-content, .map-content {
+        padding: 40px;
+    }
+    
+    .explore-text {
+        font-size: 20px;
+        margin-bottom: 40px;
+    }
+    
+    .hiker-content {
+        padding: 30px 15px;
+    }
+    
+    .hiker-image-container {
+        margin-top: 40px;
+        max-width: 100%;
+    }
+    
+    .map-timing-section .section-number {
+        font-size: 180px;
+        opacity: 0.1;
+    }
+    
+    .map-timing-section .section-title {
+        font-size: 36px;
+    }
+    
+    .hiking-gear-section .section-number {
+        font-size: 180px;
+        opacity: 0.1;
+    }
+    
+    .hiking-gear-section .section-title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 767px) {
+    :root {
+        --max-content-width: 100%;
+    }
+    
+    .hero-title {
+        font-size: 36px;
+    }
+    
+    .welcome-text {
+        font-size: 24px;
+    }
+    
+    .level-title {
+        font-size: 32px;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .section-number {
+        font-size: 140px;
+        top: 20%;
+    }
+    
+    .gear-content, .map-content {
+        padding: 30px 20px;
+    }
+    
+    .gear-image, .map-image {
+        height: 300px;
+    }
+    
+    .explore-text {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+    
+    .links-title {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+    
+    .section-overlay {
+        padding: 60px 0;
+    }
+    
+    .hiker-level-section .container,
+    .hiking-gear-section .container-fluid,
+    .map-timing-section .container-fluid,
+    .bottom-links-section .container-fluid {
+        padding: 0 20px;
+    }
+    
+    .yellow-line {
+        width: 30px;
+    }
+    
+    .read-more-container {
+        text-align: left;
+    }
+    
+    .hiking-gear-section .section-number {
+        font-size: 140px;
+        top: 20%;
+    }
+    
+    .hiking-gear-section .read-more-container {
+        text-align: left;
+    }
+} 
