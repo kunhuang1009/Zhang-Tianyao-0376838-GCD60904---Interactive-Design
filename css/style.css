@@ -28,6 +28,15 @@ body {
     min-height: 100vh;
 }
 
+/* 各页面专用背景图片 */
+.equipment-bg {
+    background-image: url('../images/BA.jpg');
+}
+
+.services-bg {
+    background-image: url('../images/EA.jpg');
+}
+
 .shared-bg-container::before {
     content: '';
     position: absolute;
@@ -1260,7 +1269,7 @@ body {
     }
 
     /* 移动端背景图片优化 */
-    .shared-bg-container {
+    .shared-bg-container, .equipment-bg, .services-bg {
         background-attachment: scroll !important; /* 移动端禁用fixed */
         background-size: cover;
         background-position: center center;
@@ -1311,7 +1320,7 @@ body {
     }
 
     /* 背景图片加载状态 */
-    .shared-bg-container, .about-hero-section, .login-section {
+    .shared-bg-container, .equipment-bg, .services-bg, .about-hero-section, .login-section {
         background-color: #1a2a36; /* 加载时的备用颜色 */
         transition: opacity 0.3s ease;
     }

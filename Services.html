@@ -306,6 +306,37 @@
                 transform: translateY(-50%) translateZ(0);
                 will-change: transform;
             }
+
+            /* Services页面背景图片移动端优化 */
+            .services-bg {
+                background-attachment: scroll !important; /* 移动端禁用fixed */
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                will-change: transform;
+                background-color: #1a2a36; /* 加载时的备用颜色 */
+            }
+        }
+
+        /* 专门针对iOS设备的适配 */
+        @supports (-webkit-touch-callout: none) {
+            .services-bg {
+                height: -webkit-fill-available;
+                min-height: -webkit-fill-available;
+            }
+        }
+
+        /* 横屏模式适配 */
+        @media screen and (max-width: 768px) and (orientation: landscape) {
+            .services-bg {
+                min-height: 100vh;
+                height: auto;
+                padding: 60px 0;
+            }
         }
     </style>
 </head>
