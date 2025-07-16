@@ -24,6 +24,8 @@ body {
     background-position: center;
     background-attachment: fixed;
     position: relative;
+    background-repeat: no-repeat;
+    min-height: 100vh;
 }
 
 .shared-bg-container::before {
@@ -1255,6 +1257,70 @@ body {
     .hero-section, .about-hero-section, .login-section {
         min-height: 100vh;
         min-height: -webkit-fill-available;
+    }
+
+    /* 移动端背景图片优化 */
+    .shared-bg-container {
+        background-attachment: scroll !important; /* 移动端禁用fixed */
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        will-change: transform;
+    }
+
+    /* 其他页面背景图片优化 */
+    .about-hero-section, .login-section {
+        background-attachment: scroll !important;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        will-change: transform;
+    }
+
+    /* 图片容器优化 */
+    .hiker-image-container, .gear-image, .map-image, .team-member {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        will-change: transform;
+        overflow: hidden;
+    }
+
+    .hiker-image-container img, .gear-image img, .map-image img, .team-member img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        will-change: transform;
+        loading: lazy; /* 原生懒加载 */
+    }
+
+    /* 图片加载优化 */
+    img {
+        image-rendering: auto;
+        image-rendering: crisp-edges;
+        image-rendering: -webkit-optimize-contrast;
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* 背景图片加载状态 */
+    .shared-bg-container, .about-hero-section, .login-section {
+        background-color: #1a2a36; /* 加载时的备用颜色 */
+        transition: opacity 0.3s ease;
+    }
+
+    /* 图片加载失败时的备用样式 */
+    img[src=""], img:not([src]) {
+        opacity: 0;
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
     }
 }
 
