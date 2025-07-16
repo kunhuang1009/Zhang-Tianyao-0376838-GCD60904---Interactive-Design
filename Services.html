@@ -2,14 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-touch-fullscreen" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#1a2a36">
-    <title>Summit Seekers - 登山服务</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summit Seekers - 登山爱好者的指南</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- 自定义CSS -->
@@ -138,12 +132,6 @@
 
         .scroll-down-services:hover i {
             transform: translateY(3px);
-        }
-
-        /* Services页面背景图片 */
-        .services-bg {
-            --bg-image: url('images/EA.jpg');
-            background-image: var(--bg-image);
         }
 
         /* Services页面响应式样式 */
@@ -287,95 +275,6 @@
                 font-size: 12px;
             }
         }
-
-        /* Services页面移动端专用优化 */
-        @media screen and (max-width: 768px) {
-            .scroll-down-services {
-                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-                touch-action: manipulation;
-                min-height: 44px;
-            }
-
-            .team-member {
-                -webkit-transform: translateZ(0);
-                transform: translateZ(0);
-                will-change: transform;
-            }
-
-            .services-section-number {
-                -webkit-transform: translateY(-50%) translateZ(0);
-                transform: translateY(-50%) translateZ(0);
-                will-change: transform;
-            }
-
-            /* Services页面背景图片移动端优化 - 等比例缩小 */
-            .services-bg {
-                background-attachment: scroll !important; /* 移动端禁用fixed */
-                background-size: contain !important; /* 移动端使用contain确保完整显示 */
-                background-position: center center;
-                background-repeat: no-repeat;
-                min-height: 100vh;
-                min-height: -webkit-fill-available;
-                -webkit-transform: translateZ(0);
-                transform: translateZ(0);
-                will-change: transform;
-                background-color: #1a2a36;
-                /* 添加渐变遮罩确保文字可读性 */
-                background-image:
-                    linear-gradient(rgba(26, 42, 54, 0.4), rgba(26, 42, 54, 0.4)),
-                    var(--bg-image);
-            }
-        }
-
-        /* 专门针对iOS Safari的背景图片适配 */
-        @supports (-webkit-touch-callout: none) {
-            .services-bg {
-                height: -webkit-fill-available;
-                min-height: -webkit-fill-available;
-            }
-
-            /* iOS Safari背景图片特殊处理 */
-            @media screen and (max-width: 768px) {
-                .services-bg {
-                    background-size: auto 100% !important;
-                    background-position: center center !important;
-                    position: relative;
-                    overflow: hidden;
-                }
-
-                .services-bg::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-image: var(--bg-image);
-                    background-size: contain;
-                    background-position: center center;
-                    background-repeat: no-repeat;
-                    z-index: -1;
-                    -webkit-transform: translateZ(0);
-                    transform: translateZ(0);
-                    will-change: transform;
-                }
-            }
-
-            @media screen and (max-width: 480px) {
-                .services-bg::before {
-                    opacity: 0.8;
-                }
-            }
-        }
-
-        /* 横屏模式适配 */
-        @media screen and (max-width: 768px) and (orientation: landscape) {
-            .services-bg {
-                min-height: 100vh;
-                height: auto;
-                padding: 60px 0;
-            }
-        }
     </style>
 </head>
 <body>
@@ -436,13 +335,13 @@
         </div>
 
         <!-- 共享背景容器 - 新增 -->
-        <div class="shared-bg-container services-bg">
+        <div class="shared-bg-container" style="background-image: url('images/EA.jpg');">
             <!-- 英雄区域 -->
             <section class="hero-section" id="section1">
                 <div class="container" style="max-width: var(--max-content-width);">
                     <div class="row justify-content-center">
                         <div class="col-md-10 hero-content">
-                            <h1 class="services-hero-title">Our Mission Is To Guide<br>You Beyond The Summmit</h1>
+                            <h1 class="services-hero-title">We Have Professional<br>Equipment And Personnel!</h1>
                             <div>
                                 <a href="#section2" class="scroll-down-services">
                                     scroll down <i class="fas fa-arrow-down"></i>
@@ -461,7 +360,7 @@
                             <!-- 图片部分在左侧 -->
                             <div class="col-lg-6 col-md-6 d-flex align-items-center">
                                 <div class="hiker-image-container">
-                                    <img src="images/EB.jpg" alt="Hiking gear and equipment" class="img-fluid" loading="lazy">
+                                    <img src="images/BB.jpg" alt="Hiking gear and equipment" class="img-fluid">
                                 </div>
                             </div>
                             <!-- 文字部分在右侧 -->
@@ -511,7 +410,7 @@
                     <!-- 图片部分在右侧 -->
                     <div class="col-md-5">
                         <div class="gear-image">
-                            <img src="images/DB.jpg" alt="Hiker with backpack" class="img-fluid" loading="lazy">
+                            <img src="images/BC.jpg" alt="Hiker with backpack" class="img-fluid">
                         </div>
                     </div>
                 </div>
@@ -525,7 +424,7 @@
                     <!-- 第一个团队成员 -->
                     <div class="col-md-4 mb-4">
                         <div class="team-member">
-                            <img src="images/DC.jpg" alt="Emma Lee" class="img-fluid" loading="lazy">
+                            <img src="images/DC.jpg" alt="Emma Lee" class="img-fluid">
                             <div class="team-member-content">
                                 <h4 class="team-member-name">Name: Emma Lee</h4>
                                 <h5 class="team-member-role">Role: Lead Guide</h5>
@@ -539,7 +438,7 @@
                     <!-- 第二个团队成员 -->
                     <div class="col-md-4 mb-4">
                         <div class="team-member">
-                            <img src="images/DD.jpg" alt="Javier Torres" class="img-fluid" loading="lazy">
+                            <img src="images/DD.jpg" alt="Javier Torres" class="img-fluid">
                             <div class="team-member-content">
                                 <h4 class="team-member-name">Name: Javier Torres</h4>
                                 <h5 class="team-member-role">Role: Gear Specialist</h5>
@@ -553,7 +452,7 @@
                     <!-- 第三个团队成员 -->
                     <div class="col-md-4 mb-4">
                         <div class="team-member">
-                            <img src="images/DE.jpg" alt="Anika Sharma" class="img-fluid" loading="lazy">
+                            <img src="images/DE.jpg" alt="Anika Sharma" class="img-fluid">
                             <div class="team-member-content">
                                 <h4 class="team-member-name">Name: Anika Sharma</h4>
                                 <h5 class="team-member-role">Role: Expedition Planner</h5>
@@ -623,47 +522,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- 自定义JS -->
     <script src="js/main.js"></script>
-
-    <!-- iOS Safari背景图片优化脚本 -->
-    <script>
-        // 检测iOS Safari
-        function isIOSSafari() {
-            const ua = navigator.userAgent;
-            const iOS = /iPad|iPhone|iPod/.test(ua);
-            const webkit = /WebKit/.test(ua);
-            const safari = /Safari/.test(ua);
-            const chrome = /Chrome/.test(ua);
-            return iOS && webkit && safari && !chrome;
-        }
-
-        // iOS Safari背景图片优化
-        if (isIOSSafari()) {
-            document.addEventListener('DOMContentLoaded', function() {
-                const bgContainers = document.querySelectorAll('.shared-bg-container, .equipment-bg, .services-bg');
-
-                bgContainers.forEach(function(container) {
-                    // 强制重新渲染背景图片
-                    container.style.webkitTransform = 'translateZ(0)';
-                    container.style.transform = 'translateZ(0)';
-
-                    // 监听窗口大小变化
-                    window.addEventListener('resize', function() {
-                        setTimeout(function() {
-                            container.style.webkitTransform = 'translateZ(0)';
-                            container.style.transform = 'translateZ(0)';
-                        }, 100);
-                    });
-
-                    // 监听方向变化
-                    window.addEventListener('orientationchange', function() {
-                        setTimeout(function() {
-                            container.style.webkitTransform = 'translateZ(0)';
-                            container.style.transform = 'translateZ(0)';
-                        }, 300);
-                    });
-                });
-            });
-        }
-    </script>
 </body>
-</html>
+</html> 

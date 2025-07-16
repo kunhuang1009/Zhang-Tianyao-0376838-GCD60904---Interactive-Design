@@ -2,13 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-touch-fullscreen" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#1a2a36">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Summit Seekers - 关于我们</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -182,74 +176,6 @@
             .start-journey-btn {
                 padding: 8px 15px;
                 font-size: 12px;
-            }
-        }
-
-        /* About页面移动端专用优化 */
-        @media screen and (max-width: 768px) {
-            .start-journey-btn {
-                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-                touch-action: manipulation;
-                min-height: 44px;
-                -webkit-transform: translateZ(0);
-                transform: translateZ(0);
-                will-change: transform;
-            }
-
-            .about-hero-section {
-                -webkit-transform: translateZ(0);
-                transform: translateZ(0);
-                will-change: transform;
-                /* 背景图片等比例缩小 */
-                background-size: contain !important;
-                background-position: center center;
-                background-image:
-                    linear-gradient(rgba(26, 42, 54, 0.4), rgba(26, 42, 54, 0.4)),
-                    url('images/FA.jpg');
-            }
-        }
-
-        /* About页面小屏幕优化 */
-        @media screen and (max-width: 480px) {
-            .about-hero-section {
-                background-image:
-                    linear-gradient(rgba(26, 42, 54, 0.5), rgba(26, 42, 54, 0.5)),
-                    url('images/FA.jpg');
-            }
-        }
-
-        /* About页面iOS Safari专用适配 */
-        @supports (-webkit-touch-callout: none) {
-            @media screen and (max-width: 768px) {
-                .about-hero-section {
-                    background-size: auto 100% !important;
-                    background-position: center center !important;
-                    position: relative;
-                    overflow: hidden;
-                }
-
-                .about-hero-section::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-image: url('images/FA.jpg');
-                    background-size: contain;
-                    background-position: center center;
-                    background-repeat: no-repeat;
-                    z-index: -1;
-                    -webkit-transform: translateZ(0);
-                    transform: translateZ(0);
-                    will-change: transform;
-                }
-            }
-
-            @media screen and (max-width: 480px) {
-                .about-hero-section::before {
-                    opacity: 0.8;
-                }
             }
         }
     </style>
