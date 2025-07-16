@@ -10,12 +10,42 @@
     --scroll-progress: 0%; /* 添加滚动进度变量 */
 }
 
+/* 强制桌面版本显示 - 禁用响应式 */
+html {
+    min-width: 1200px;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--text-color);
-    overflow-x: hidden;
+    overflow-x: auto;
     position: relative;
+    min-width: 1200px;
 }
+
+/* 确保所有图片保持原始尺寸比例 */
+img {
+    max-width: none !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+/* 确保容器保持固定宽度 */
+.container, .container-fluid {
+    min-width: 1200px !important;
+}
+
+/* 强制保持桌面布局 */
+.col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-10 {
+    flex: none !important;
+    max-width: none !important;
+}
+
+.col-md-4 { width: 33.333333% !important; }
+.col-md-5 { width: 41.666667% !important; }
+.col-md-6 { width: 50% !important; }
+.col-md-7 { width: 58.333333% !important; }
+.col-md-10 { width: 83.333333% !important; }
 
 /* 共享背景容器 - 新增 */
 .shared-bg-container {
@@ -803,117 +833,114 @@ body {
     color: var(--accent-color);
 }
 
-/* 响应式样式 */
-@media (max-width: 1200px) {
+/* 响应式样式 - 已禁用以保持桌面版本外观 */
+/* @media (max-width: 1200px) {
     :root {
         --max-content-width: 1140px;
     }
-    
+
     .hiker-image-container {
         margin-right: 0;
         max-width: 400px;
     }
-    
+
     .gear-image, .map-image {
         max-width: 400px;
     }
-    
+
     .map-timing-section .section-number {
         font-size: 240px;
     }
-    
+
     .hiking-gear-section .section-number {
         font-size: 240px;
     }
 
-    /* 页脚响应式 - 1200px */
     .footer-links-container {
         padding-left: 150px;
     }
-}
+} */
 
-@media (max-width: 991px) {
+/* @media (max-width: 991px) {
     :root {
         --max-content-width: 960px;
     }
-    
+
     .hero-title {
         font-size: 48px;
     }
-    
+
     .welcome-text {
         font-size: 30px;
     }
-    
+
     .level-title {
         font-size: 42px;
     }
-    
+
     .side-nav, .social-sidebar {
         display: none;
     }
-    
+
     .hero-content {
         padding-left: 15px;
     }
-    
+
     .section-title {
         font-size: 36px;
     }
-    
+
     .section-number {
         font-size: 180px;
         opacity: 0.1;
     }
-    
+
     .gear-content, .map-content {
         padding: 40px;
     }
-    
+
     .explore-text {
         font-size: 20px;
         margin-bottom: 40px;
     }
-    
+
     .hiker-content {
         padding: 30px 15px;
     }
-    
+
     .hiker-image-container {
         margin-top: 40px;
         max-width: 100%;
     }
-    
+
     .map-timing-section .section-number {
         font-size: 180px;
         opacity: 0.1;
     }
-    
+
     .map-timing-section .section-title {
         font-size: 36px;
     }
-    
+
     .hiking-gear-section .section-number {
         font-size: 180px;
         opacity: 0.1;
     }
-    
+
     .hiking-gear-section .section-title {
         font-size: 36px;
     }
 
-    /* 页脚响应式 - 991px */
     .footer-links-container {
         padding-left: 100px;
     }
-}
+} */
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     :root {
         --max-content-width: 100%;
     }
 
-    /* 导航栏响应式 - 767px - 保持相同布局 */
     .navbar {
         padding: 0 15px;
     }
@@ -930,7 +957,6 @@ body {
     .nav-center {
         padding: 5px 15px;
         border-radius: 40px;
-        /* 确保中央导航始终居中 */
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -949,7 +975,6 @@ body {
         margin-right: 3px;
     }
 
-    /* 确保三列布局保持不变 */
     .navbar .container-fluid {
         display: flex;
         justify-content: space-between;
@@ -960,71 +985,70 @@ body {
     .hero-title {
         font-size: 36px;
     }
-    
+
     .welcome-text {
         font-size: 24px;
     }
-    
+
     .level-title {
         font-size: 32px;
     }
-    
+
     .section-title {
         font-size: 28px;
     }
-    
+
     .section-number {
         font-size: 140px;
         top: 20%;
     }
-    
+
     .gear-content, .map-content {
         padding: 30px 20px;
     }
-    
+
     .gear-image, .map-image {
         height: 300px;
     }
-    
+
     .explore-text {
         font-size: 18px;
         margin-bottom: 30px;
     }
-    
+
     .links-title {
         font-size: 20px;
         margin-top: 20px;
     }
-    
+
     .section-overlay {
         padding: 60px 0;
     }
-    
+
     .hiker-level-section .container,
     .hiking-gear-section .container-fluid,
     .map-timing-section .container-fluid,
     .bottom-links-section .container-fluid {
         padding: 0 20px;
     }
-    
+
     .yellow-line {
         width: 30px;
     }
-    
+
     .read-more-container {
         text-align: left;
     }
-    
+
     .hiking-gear-section .section-number {
         font-size: 140px;
         top: 20%;
     }
-    
+
     .hiking-gear-section .read-more-container {
         text-align: left;
     }
 
-    /* 页脚响应式 - 767px */
     .footer-links-container {
         padding-left: 0;
         text-align: center;
@@ -1034,11 +1058,10 @@ body {
     .explore-text {
         text-align: center;
     }
-}
+} */
 
-/* 超小屏幕响应式 - 480px */
-@media (max-width: 480px) {
-    /* 导航栏响应式 - 480px - 保持相同布局 */
+/* 超小屏幕响应式 - 480px - 已禁用 */
+/* @media (max-width: 480px) {
     .navbar {
         padding: 0 10px;
     }
@@ -1055,7 +1078,6 @@ body {
     .nav-center {
         padding: 4px 12px;
         border-radius: 35px;
-        /* 确保中央导航始终居中 */
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -1074,7 +1096,6 @@ body {
         margin-right: 2px;
     }
 
-    /* 确保三列布局保持不变 */
     .navbar .container-fluid {
         display: flex;
         justify-content: space-between;
@@ -1090,7 +1111,6 @@ body {
         font-size: 20px;
     }
 
-    /* 页脚响应式 - 480px */
     .footer-links-container {
         padding-left: 0;
         text-align: center;
@@ -1105,11 +1125,10 @@ body {
     .links-title {
         font-size: 18px;
     }
-}
+} */
 
-/* 极小屏幕响应式 - 360px */
-@media (max-width: 360px) {
-    /* 导航栏响应式 - 360px - 保持相同布局 */
+/* 极小屏幕响应式 - 360px - 已禁用 */
+/* @media (max-width: 360px) {
     .navbar {
         padding: 0 8px;
     }
@@ -1126,7 +1145,6 @@ body {
     .nav-center {
         padding: 3px 10px;
         border-radius: 30px;
-        /* 确保中央导航始终居中 */
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -1141,7 +1159,6 @@ body {
         font-size: 11px;
     }
 
-    /* 确保三列布局保持不变 */
     .navbar .container-fluid {
         display: flex;
         justify-content: space-between;
@@ -1157,7 +1174,6 @@ body {
         font-size: 18px;
     }
 
-    /* 页脚响应式 - 360px */
     .footer-links-container {
         padding-left: 0;
         text-align: center;
@@ -1176,4 +1192,4 @@ body {
     .bottom-links-list a {
         font-size: 14px;
     }
-}
+} */
