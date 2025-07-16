@@ -142,7 +142,8 @@
 
         /* Services页面背景图片 */
         .services-bg {
-            background-image: url('images/EA.jpg');
+            --bg-image: url('images/EA.jpg');
+            background-image: var(--bg-image);
         }
 
         /* Services页面响应式样式 */
@@ -307,10 +308,10 @@
                 will-change: transform;
             }
 
-            /* Services页面背景图片移动端优化 */
+            /* Services页面背景图片移动端优化 - 等比例缩小 */
             .services-bg {
                 background-attachment: scroll !important; /* 移动端禁用fixed */
-                background-size: cover;
+                background-size: contain !important; /* 移动端使用contain确保完整显示 */
                 background-position: center center;
                 background-repeat: no-repeat;
                 min-height: 100vh;
@@ -318,15 +319,52 @@
                 -webkit-transform: translateZ(0);
                 transform: translateZ(0);
                 will-change: transform;
-                background-color: #1a2a36; /* 加载时的备用颜色 */
+                background-color: #1a2a36;
+                /* 添加渐变遮罩确保文字可读性 */
+                background-image:
+                    linear-gradient(rgba(26, 42, 54, 0.4), rgba(26, 42, 54, 0.4)),
+                    var(--bg-image);
             }
         }
 
-        /* 专门针对iOS设备的适配 */
+        /* 专门针对iOS Safari的背景图片适配 */
         @supports (-webkit-touch-callout: none) {
             .services-bg {
                 height: -webkit-fill-available;
                 min-height: -webkit-fill-available;
+            }
+
+            /* iOS Safari背景图片特殊处理 */
+            @media screen and (max-width: 768px) {
+                .services-bg {
+                    background-size: auto 100% !important;
+                    background-position: center center !important;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                .services-bg::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-image: var(--bg-image);
+                    background-size: contain;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    z-index: -1;
+                    -webkit-transform: translateZ(0);
+                    transform: translateZ(0);
+                    will-change: transform;
+                }
+            }
+
+            @media screen and (max-width: 480px) {
+                .services-bg::before {
+                    opacity: 0.8;
+                }
             }
         }
 
@@ -585,5 +623,47 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- 自定义JS -->
     <script src="js/main.js"></script>
+
+    <!-- iOS Safari背景图片优化脚本 -->
+    <script>
+        // 检测iOS Safari
+        function isIOSSafari() {
+            const ua = navigator.userAgent;
+            const iOS = /iPad|iPhone|iPod/.test(ua);
+            const webkit = /WebKit/.test(ua);
+            const safari = /Safari/.test(ua);
+            const chrome = /Chrome/.test(ua);
+            return iOS && webkit && safari && !chrome;
+        }
+
+        // iOS Safari背景图片优化
+        if (isIOSSafari()) {
+            document.addEventListener('DOMContentLoaded', function() {
+                const bgContainers = document.querySelectorAll('.shared-bg-container, .equipment-bg, .services-bg');
+
+                bgContainers.forEach(function(container) {
+                    // 强制重新渲染背景图片
+                    container.style.webkitTransform = 'translateZ(0)';
+                    container.style.transform = 'translateZ(0)';
+
+                    // 监听窗口大小变化
+                    window.addEventListener('resize', function() {
+                        setTimeout(function() {
+                            container.style.webkitTransform = 'translateZ(0)';
+                            container.style.transform = 'translateZ(0)';
+                        }, 100);
+                    });
+
+                    // 监听方向变化
+                    window.addEventListener('orientationchange', function() {
+                        setTimeout(function() {
+                            container.style.webkitTransform = 'translateZ(0)';
+                            container.style.transform = 'translateZ(0)';
+                        }, 300);
+                    });
+                });
+            });
+        }
+    </script>
 </body>
-</html> 
+</html>

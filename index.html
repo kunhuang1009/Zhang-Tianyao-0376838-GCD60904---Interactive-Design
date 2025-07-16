@@ -229,5 +229,47 @@
     <!-- 自定义JS -->
     <script src="js/main.js"></script>
 
+    <!-- iOS Safari背景图片优化脚本 -->
+    <script>
+        // 检测iOS Safari
+        function isIOSSafari() {
+            const ua = navigator.userAgent;
+            const iOS = /iPad|iPhone|iPod/.test(ua);
+            const webkit = /WebKit/.test(ua);
+            const safari = /Safari/.test(ua);
+            const chrome = /Chrome/.test(ua);
+            return iOS && webkit && safari && !chrome;
+        }
+
+        // iOS Safari背景图片优化
+        if (isIOSSafari()) {
+            document.addEventListener('DOMContentLoaded', function() {
+                const bgContainers = document.querySelectorAll('.shared-bg-container, .equipment-bg, .services-bg');
+
+                bgContainers.forEach(function(container) {
+                    // 强制重新渲染背景图片
+                    container.style.webkitTransform = 'translateZ(0)';
+                    container.style.transform = 'translateZ(0)';
+
+                    // 监听窗口大小变化
+                    window.addEventListener('resize', function() {
+                        setTimeout(function() {
+                            container.style.webkitTransform = 'translateZ(0)';
+                            container.style.transform = 'translateZ(0)';
+                        }, 100);
+                    });
+
+                    // 监听方向变化
+                    window.addEventListener('orientationchange', function() {
+                        setTimeout(function() {
+                            container.style.webkitTransform = 'translateZ(0)';
+                            container.style.transform = 'translateZ(0)';
+                        }, 300);
+                    });
+                });
+            });
+        }
+    </script>
+
 </body>
-</html> 
+</html>

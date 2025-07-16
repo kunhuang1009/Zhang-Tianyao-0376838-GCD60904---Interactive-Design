@@ -19,7 +19,8 @@ body {
 
 /* 共享背景容器 - 新增 */
 .shared-bg-container {
-    background-image: url('../images/AA.jpg');
+    --bg-image: url('../images/AA.jpg');
+    background-image: var(--bg-image);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -30,11 +31,13 @@ body {
 
 /* 各页面专用背景图片 */
 .equipment-bg {
-    background-image: url('../images/BA.jpg');
+    --bg-image: url('../images/BA.jpg');
+    background-image: var(--bg-image);
 }
 
 .services-bg {
-    background-image: url('../images/EA.jpg');
+    --bg-image: url('../images/EA.jpg');
+    background-image: var(--bg-image);
 }
 
 .shared-bg-container::before {
@@ -1268,10 +1271,10 @@ body {
         min-height: -webkit-fill-available;
     }
 
-    /* 移动端背景图片优化 */
+    /* 移动端背景图片优化 - 等比例缩小 */
     .shared-bg-container, .equipment-bg, .services-bg {
         background-attachment: scroll !important; /* 移动端禁用fixed */
-        background-size: cover;
+        background-size: cover; /* 保持cover但添加响应式调整 */
         background-position: center center;
         background-repeat: no-repeat;
         min-height: 100vh;
@@ -1279,6 +1282,40 @@ body {
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
         will-change: transform;
+        background-color: #1a2a36;
+    }
+}
+
+/* 平板端背景图片优化 */
+@media screen and (max-width: 991px) {
+    .shared-bg-container, .equipment-bg, .services-bg {
+        background-size: cover;
+        background-position: center top; /* 平板端优先显示图片上部 */
+    }
+}
+
+/* 手机端背景图片优化 - 等比例缩小 */
+@media screen and (max-width: 767px) {
+    .shared-bg-container, .equipment-bg, .services-bg {
+        background-size: contain !important; /* 手机端使用contain确保完整显示 */
+        background-position: center center;
+        background-color: #1a2a36;
+        /* 添加渐变遮罩确保文字可读性 */
+        background-image:
+            linear-gradient(rgba(26, 42, 54, 0.4), rgba(26, 42, 54, 0.4)),
+            var(--bg-image);
+    }
+}
+
+/* 小手机端背景图片优化 */
+@media screen and (max-width: 480px) {
+    .shared-bg-container, .equipment-bg, .services-bg {
+        background-size: contain !important;
+        background-position: center center;
+        /* 增强遮罩确保文字清晰 */
+        background-image:
+            linear-gradient(rgba(26, 42, 54, 0.5), rgba(26, 42, 54, 0.5)),
+            var(--bg-image);
     }
 
     /* 其他页面背景图片优化 */
@@ -1333,21 +1370,63 @@ body {
     }
 }
 
-/* 专门针对iOS设备的适配 */
+/* 专门针对iOS Safari的背景图片适配 */
 @supports (-webkit-touch-callout: none) {
     .hero-section, .about-hero-section, .login-section {
         height: -webkit-fill-available;
         min-height: -webkit-fill-available;
     }
 
-    /* iOS Safari状态栏适配 */
+    /* iOS Safari背景图片特殊处理 */
     @media screen and (max-width: 768px) {
+        .shared-bg-container, .equipment-bg, .services-bg {
+            /* iOS Safari专用背景图片设置 */
+            background-size: auto 100% !important; /* 高度100%，宽度自适应 */
+            background-position: center center !important;
+            background-repeat: no-repeat !important;
+            background-attachment: scroll !important;
+            /* 使用伪元素确保图片完整显示 */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shared-bg-container::before,
+        .equipment-bg::before,
+        .services-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: var(--bg-image);
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+            z-index: -1;
+            /* iOS Safari硬件加速 */
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        /* iOS Safari状态栏适配 */
         #header {
             padding-top: env(safe-area-inset-top);
         }
 
         .hero-section {
             padding-top: calc(env(safe-area-inset-top) + 80px);
+        }
+    }
+
+    /* iOS Safari小屏幕优化 */
+    @media screen and (max-width: 480px) {
+        .shared-bg-container::before,
+        .equipment-bg::before,
+        .services-bg::before {
+            background-size: contain;
+            opacity: 0.8; /* 稍微降低透明度确保文字可读 */
         }
     }
 }
