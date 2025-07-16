@@ -15,51 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* 导航栏背景样式 */
-        #header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 10;
-            background-color: transparent;
-        }
-        
-        .navbar {
-            background-color: transparent;
-            padding: 20px 0;
-        }
-        
-        .navbar-brand {
-            background-color: transparent;
-            text-decoration: none;
-        }
-        
-        .logo-text {
-            font-size: 48px;
-            font-weight: 700;
-            color: #1a7b85;
-            line-height: 0.9;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            display: block;
-            text-align: left;
-            margin: 0;
-            padding: 0;
-        }
-        
-        .logo-text .second-line {
-            font-size: 48px;
-            display: block;
-        }
-        
-        .navbar-brand img {
-            height: 80px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            mix-blend-mode: multiply; /* 尝试使白色背景融合 */
-        }
-        
+        /* Account页面特有样式 */
         .login-section {
             height: 100vh;
             background-image: url('images/CA.jpg');
@@ -70,7 +26,7 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .login-section::before {
             content: '';
             position: absolute;
@@ -81,7 +37,7 @@
             background: rgba(0, 0, 0, 0.4);
             z-index: 0;
         }
-        
+
         .login-container {
             background-color: rgba(30, 35, 40, 0.9);
             padding: 120px 120px;
@@ -90,53 +46,175 @@
             position: relative;
             z-index: 1;
         }
-        
+
         .login-container input {
             border-radius: 0;
             background-color: white;
             border: none;
         }
-        
+
         .form-group {
             margin-bottom: 20px;
         }
-        
-        .nav-center {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(26, 42, 54, 0.8);
-            border-radius: 50px;
-            padding: 10px 30px;
+
+        /* 登录表单样式 */
+        .form-group-flex {
+            display: flex;
+            align-items: center;
         }
-        
-        .nav-link {
-            color: white !important;
-            margin: 0 15px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: #1a7b85 !important;
-        }
-        
-        .account-link {
+
+        .form-label {
             color: white;
-            text-decoration: none;
-            font-weight: 500;
+            font-size: 16px;
+            width: 150px;
+            margin-bottom: 0;
+            flex-shrink: 0;
+        }
+
+        .form-input {
+            height: 35px;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .register-btn, .login-btn {
+            width: 120px;
+            height: 40px;
+            font-size: 16px;
+            background-color: rgba(80, 80, 80, 0.5);
+            color: white;
+            border: none;
+            border-radius: 0;
             transition: all 0.3s ease;
         }
-        
-        .account-link:hover {
-            color: #1a7b85;
+
+        .register-btn {
+            margin-right: 30px;
+        }
+
+        .register-btn:hover, .login-btn:hover {
+            background-color: rgba(80, 80, 80, 0.8);
+        }
+
+        /* Account页面响应式样式 */
+        @media (max-width: 1200px) {
+            .login-container {
+                padding: 100px 100px;
+                max-width: 600px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .login-container {
+                padding: 80px 80px;
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .login-container {
+                padding: 60px 40px;
+                max-width: 90%;
+                margin: 0 20px;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .form-group-flex {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .form-label {
+                width: 100%;
+                margin-bottom: 8px;
+                font-size: 14px;
+            }
+
+            .form-input {
+                min-width: auto;
+                width: 100%;
+            }
+
+            .register-btn, .login-btn {
+                width: 100px;
+                height: 35px;
+                font-size: 14px;
+            }
+
+            .register-btn {
+                margin-right: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 40px 30px;
+                max-width: 95%;
+                margin: 0 10px;
+            }
+
+            .login-container input {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .form-label {
+                font-size: 13px;
+            }
+
+            .register-btn, .login-btn {
+                width: 90px;
+                height: 32px;
+                font-size: 13px;
+            }
+
+            .register-btn {
+                margin-right: 15px;
+            }
+
+            .button-container {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .login-container {
+                padding: 30px 20px;
+            }
+
+            .login-container input {
+                font-size: 13px;
+                padding: 8px;
+            }
+
+            .form-label {
+                font-size: 12px;
+            }
+
+            .register-btn, .login-btn {
+                width: 80px;
+                height: 30px;
+                font-size: 12px;
+            }
+
+            .register-btn {
+                margin-right: 10px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- 导航栏 -->
     <header id="header">
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.html">
                     <div class="logo-text">
@@ -153,12 +231,15 @@
                             <a class="nav-link" href="equipment_new.html">Equipment</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="Services.html" style="color: #1a7b85 !important; font-weight: 700;">Services</a>
+                            <a class="nav-link" href="Services.html">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
                         </li>
                     </ul>
                 </div>
                 <div class="nav-right">
-                    <a href="#account" class="account-link">
+                    <a href="account.html" class="account-link">
                         <i class="fas fa-user-circle"></i> Account
                     </a>
                 </div>
@@ -171,17 +252,17 @@
         <!-- 登录部分 -->
         <section class="login-section">
             <div class="login-container">
-                <div class="form-group d-flex align-items-center">
-                    <label for="username" style="color: white; font-size: 16px; width: 150px; margin-bottom: 0;">Username/Account :</label>
-                    <input type="text" class="form-control" id="username" style="height: 35px; flex: 1; min-width: 300px;">
+                <div class="form-group form-group-flex">
+                    <label for="username" class="form-label">Username/Account :</label>
+                    <input type="text" class="form-control form-input" id="username">
                 </div>
-                <div class="form-group d-flex align-items-center">
-                    <label for="password" style="color: white; font-size: 16px; width: 150px; margin-bottom: 0;">Password :</label>
-                    <input type="password" class="form-control" id="password" style="height: 35px; flex: 1; min-width: 300px;">
+                <div class="form-group form-group-flex">
+                    <label for="password" class="form-label">Password :</label>
+                    <input type="password" class="form-control form-input" id="password">
                 </div>
-                <div class="text-center" style="margin-top: 30px;">
-                    <button class="register-btn" style="width: 120px; height: 40px; font-size: 16px; background-color: rgba(80, 80, 80, 0.5); color: white; border: none; border-radius: 0; margin-right: 30px;">Register</button>
-                    <button class="login-btn" style="width: 120px; height: 40px; font-size: 16px; background-color: rgba(80, 80, 80, 0.5); color: white; border: none; border-radius: 0;">Login</button>
+                <div class="button-container">
+                    <button class="register-btn">Register</button>
+                    <button class="login-btn">Login</button>
                 </div>
             </div>
         </section>
@@ -199,7 +280,7 @@
                     
                     <!-- 中间链接 -->
                     <div class="col-md-4">
-                        <div style="padding-left: 190px;">
+                        <div class="footer-links-container">
                             <h3 class="links-title">More on The Blog</h3>
                             <ul class="bottom-links-list">
                                 <li><a href="#">Contributors & Writers</a></li>
@@ -209,10 +290,10 @@
                             </ul>
                         </div>
                     </div>
-                    
+
                     <!-- 右侧链接 -->
                     <div class="col-md-4">
-                        <div style="padding-left: 140px;">
+                        <div class="footer-links-container">
                             <h3 class="links-title">More on MNTN</h3>
                             <ul class="bottom-links-list">
                                 <li><a href="#">The Team</a></li>

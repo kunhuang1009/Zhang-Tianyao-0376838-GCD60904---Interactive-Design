@@ -15,85 +15,272 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* 导航栏共享样式 */
-        #header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 10;
-            background-color: transparent;
-        }
-
-        .navbar {
-            background-color: transparent;
-            padding: 20px 0;
-        }
-
-        .navbar-brand {
-            background-color: transparent;
-            text-decoration: none;
-        }
-
-        .logo-text {
-            font-size: 48px;
-            font-weight: 700;
-            color: #1a7b85;
-            line-height: 0.9;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            display: block;
-            text-align: left;
-            margin: 0;
-            padding: 0;
-        }
-
-        .logo-text .second-line {
-            font-size: 48px;
-            display: block;
-        }
-
-        .nav-center {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(26, 42, 54, 0.8);
-            border-radius: 50px;
-            padding: 10px 30px;
-        }
-
-        .nav-link {
-            color: white !important;
-            margin: 0 15px;
+        /* Services页面特有样式 */
+        .services-hero-title {
+            font-size: 64px;
             font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link.active {
-            color: #1a7b85 !important;
-            font-weight: 700;
-        }
-
-        .nav-link:hover {
-            color: #1a7b85 !important;
-        }
-
-        .account-link {
+            line-height: 1.2;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             color: white;
+        }
+
+        .services-section-number {
+            font-size: 280px;
+            color: rgba(255, 255, 255, 0.1);
+            top: 50%;
+            transform: translateY(-50%);
+            position: absolute;
+            z-index: 1;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .services-section-tag {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .services-section-tag hr {
+            width: 70px;
+            height: 2px;
+            background-color: #ffc107;
+            margin-right: 15px;
+            border: none;
+        }
+
+        .services-section-tag-text {
+            color: #ffc107;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+
+        .services-section-title {
+            font-size: 48px;
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .services-section-description {
+            font-size: 16px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .services-section-description ul {
+            padding-left: 20px;
+        }
+
+        .team-member {
+            background-color: #0f1a24;
+            padding-bottom: 30px;
+        }
+
+        .team-member img {
+            width: 100%;
+        }
+
+        .team-member-content {
+            padding: 20px;
+        }
+
+        .team-member-name {
+            font-size: 20px;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .team-member-role {
+            font-size: 18px;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .team-member-description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .scroll-down-services {
+            position: absolute;
+            bottom: -20px;
+            right: 0;
+            color: #ffc107;
             text-decoration: none;
-            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .scroll-down-services i {
+            margin-left: 10px;
             transition: all 0.3s ease;
         }
 
-        .account-link:hover {
-            color: #1a7b85;
+        .scroll-down-services:hover {
+            color: #ffcc33;
+        }
+
+        .scroll-down-services:hover i {
+            transform: translateY(3px);
+        }
+
+        /* Services页面响应式样式 */
+        @media (max-width: 1200px) {
+            .services-hero-title {
+                font-size: 56px;
+            }
+
+            .services-section-number {
+                font-size: 240px;
+            }
+
+            .services-section-title {
+                font-size: 42px;
+            }
+
+            .services-section-tag hr {
+                width: 60px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .services-hero-title {
+                font-size: 48px;
+                text-align: center;
+            }
+
+            .services-section-number {
+                font-size: 200px;
+                opacity: 0.1;
+            }
+
+            .services-section-title {
+                font-size: 36px;
+            }
+
+            .services-section-description {
+                font-size: 15px;
+            }
+
+            .scroll-down-services {
+                position: static;
+                text-align: center;
+                margin-top: 20px;
+                display: block;
+            }
+
+            .team-member-content {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .services-hero-title {
+                font-size: 36px;
+                text-align: center;
+            }
+
+            .services-section-number {
+                font-size: 160px;
+                opacity: 0.1;
+            }
+
+            .services-section-title {
+                font-size: 28px;
+            }
+
+            .services-section-description {
+                font-size: 14px;
+            }
+
+            .services-section-tag hr {
+                width: 50px;
+            }
+
+            .services-section-tag-text {
+                font-size: 12px;
+            }
+
+            .team-member-name {
+                font-size: 18px;
+            }
+
+            .team-member-role {
+                font-size: 16px;
+            }
+
+            .team-member-description {
+                font-size: 13px;
+            }
+
+            .team-member-content {
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-hero-title {
+                font-size: 28px;
+            }
+
+            .services-section-number {
+                font-size: 120px;
+            }
+
+            .services-section-title {
+                font-size: 24px;
+            }
+
+            .services-section-description {
+                font-size: 13px;
+            }
+
+            .team-member-name {
+                font-size: 16px;
+            }
+
+            .team-member-role {
+                font-size: 14px;
+            }
+
+            .team-member-description {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .services-hero-title {
+                font-size: 24px;
+            }
+
+            .services-section-number {
+                font-size: 100px;
+            }
+
+            .services-section-title {
+                font-size: 20px;
+            }
+
+            .services-section-description {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- 导航栏 -->
     <header id="header">
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.html">
                     <div class="logo-text">
@@ -154,9 +341,9 @@
                 <div class="container" style="max-width: var(--max-content-width);">
                     <div class="row justify-content-center">
                         <div class="col-md-10 hero-content">
-                            <h1 class="hero-title">We Have Professional<br>Equipment And Personnel!</h1>
-                            <div style="position: absolute; bottom: -20px; right: 0;">
-                                <a href="#section2" class="scroll-down" style="color: #ffc107;">
+                            <h1 class="services-hero-title">We Have Professional<br>Equipment And Personnel!</h1>
+                            <div>
+                                <a href="#section2" class="scroll-down-services">
                                     scroll down <i class="fas fa-arrow-down"></i>
                                 </a>
                             </div>
@@ -178,15 +365,15 @@
                             </div>
                             <!-- 文字部分在右侧 -->
                             <div class="col-lg-6 col-md-6 hiker-content">
-                                <div class="section-number" style="font-size: 280px; color: rgba(255, 255, 255, 0.1); top: 50%; transform: translateY(-50%); position: absolute; z-index: 1;">01</div>
+                                <div class="services-section-number">01</div>
                                 <div style="position: relative; z-index: 2;">
-                                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                                        <hr style="width: 70px; height: 2px; background-color: #ffc107; margin-right: 15px; border: none;">
-                                        <div style="color: #ffc107; font-weight: 600; letter-spacing: 1px;">WHO WE ARE</div>
+                                    <div class="services-section-tag">
+                                        <hr>
+                                        <div class="services-section-tag-text">WHO WE ARE</div>
                                     </div>
-                                    <h2 class="level-title" style="font-size: 48px; margin-bottom: 30px; font-family: 'Playfair Display', serif; font-weight: 400;">Passionate Mountaineers,<br>Trusted Guides</h2>
+                                    <h2 class="services-section-title">Passionate Mountaineers,<br>Trusted Guides</h2>
                                     <div class="level-description">
-                                        <p style="font-size: 16px; line-height: 1.7; color: rgba(255, 255, 255, 0.9);">
+                                        <p class="services-section-description">
                                             Summit Seekers is a team of certified mountaineers and outdoor lovers who believe that every peak has a story. With decades of combined experience, our mission is to lead others safely into the wild with confidence and joy.
                                         </p>
                                     </div>
@@ -204,15 +391,15 @@
                 <div class="row align-items-center">
                     <!-- 文字部分在左侧 -->
                     <div class="col-md-7 gear-content">
-                        <div class="section-number" style="font-size: 280px; color: rgba(255, 255, 255, 0.1); top: 50%; transform: translateY(-50%); position: absolute; z-index: 1;">02</div>
+                        <div class="services-section-number">02</div>
                         <div style="position: relative; z-index: 2;">
-                            <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                                <hr style="width: 70px; height: 2px; background-color: #ffc107; margin-right: 15px; border: none;">
-                                <div style="color: #ffc107; font-weight: 600; letter-spacing: 1px;">OUR CORE</div>
+                            <div class="services-section-tag">
+                                <hr>
+                                <div class="services-section-tag-text">OUR CORE</div>
                             </div>
-                            <h2 class="section-title" style="font-size: 48px; margin-bottom: 30px; font-family: 'Playfair Display', serif; font-weight: 400;">Mission, Vision, and<br>Values</h2>
+                            <h2 class="services-section-title">Mission, Vision, and<br>Values</h2>
                             <div class="section-description">
-                                <ul style="font-size: 16px; line-height: 1.7; color: rgba(255, 255, 255, 0.9); padding-left: 20px;">
+                                <ul class="services-section-description">
                                     <li>At Summit Seekers, our mission is to inspire and guide individuals to safely explore the mountains.</li>
                                     <li>We envision a world where outdoor adventure is accessible to all, regardless of experience level. Our values are rooted in safety, passion, inclusivity, and respect for nature. These principles shape every expedition, every decision, and every interaction with our community.</li>
                                     <li>We don't just climb mountains—we build lasting memories and meaningful connections.</li>
@@ -236,40 +423,40 @@
                 <div class="row">
                     <!-- 第一个团队成员 -->
                     <div class="col-md-4 mb-4">
-                        <div class="team-member" style="background-color: #0f1a24; padding-bottom: 30px;">
-                            <img src="images/DC.jpg" alt="Emma Lee" class="img-fluid" style="width: 100%;">
-                            <div style="padding: 20px;">
-                                <h4 style="font-size: 20px; color: white; margin-bottom: 5px;">Name: Emma Lee</h4>
-                                <h5 style="font-size: 18px; color: white; margin-bottom: 15px;">Role: Lead Guide</h5>
-                                <p style="font-size: 14px; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">
+                        <div class="team-member">
+                            <img src="images/DC.jpg" alt="Emma Lee" class="img-fluid">
+                            <div class="team-member-content">
+                                <h4 class="team-member-name">Name: Emma Lee</h4>
+                                <h5 class="team-member-role">Role: Lead Guide</h5>
+                                <p class="team-member-description">
                                     10+ years of high-altitude guiding, certified in alpine safety and wilderness first aid.
                                 </p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- 第二个团队成员 -->
                     <div class="col-md-4 mb-4">
-                        <div class="team-member" style="background-color: #0f1a24; padding-bottom: 30px;">
-                            <img src="images/DD.jpg" alt="Javier Torres" class="img-fluid" style="width: 100%;">
-                            <div style="padding: 20px;">
-                                <h4 style="font-size: 20px; color: white; margin-bottom: 5px;">Name: Javier Torres</h4>
-                                <h5 style="font-size: 18px; color: white; margin-bottom: 15px;">Role: Gear Specialist</h5>
-                                <p style="font-size: 14px; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">
+                        <div class="team-member">
+                            <img src="images/DD.jpg" alt="Javier Torres" class="img-fluid">
+                            <div class="team-member-content">
+                                <h4 class="team-member-name">Name: Javier Torres</h4>
+                                <h5 class="team-member-role">Role: Gear Specialist</h5>
+                                <p class="team-member-description">
                                     Expert in mountaineering equipment, ensures every climb is supported with the best gear setup.
                                 </p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- 第三个团队成员 -->
                     <div class="col-md-4 mb-4">
-                        <div class="team-member" style="background-color: #0f1a24; padding-bottom: 30px;">
-                            <img src="images/DE.jpg" alt="Anika Sharma" class="img-fluid" style="width: 100%;">
-                            <div style="padding: 20px;">
-                                <h4 style="font-size: 20px; color: white; margin-bottom: 5px;">Name: Anika Sharma</h4>
-                                <h5 style="font-size: 18px; color: white; margin-bottom: 15px;">Role: Expedition Planner</h5>
-                                <p style="font-size: 14px; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">
+                        <div class="team-member">
+                            <img src="images/DE.jpg" alt="Anika Sharma" class="img-fluid">
+                            <div class="team-member-content">
+                                <h4 class="team-member-name">Name: Anika Sharma</h4>
+                                <h5 class="team-member-role">Role: Expedition Planner</h5>
+                                <p class="team-member-description">
                                     Coordinates logistics, weather tracking, and custom route planning for each journey.
                                 </p>
                             </div>
@@ -300,6 +487,7 @@
                     
                     <!-- 中间链接 -->
                     <div class="col-md-4">
+                        <div class="footer-links-container">
                         <h3 class="links-title">More on The Blog</h3>
                         <ul class="bottom-links-list">
                             <li><a href="#">Contributors & Writers</a></li>
@@ -307,11 +495,12 @@
                             <li><a href="#">Contact Us</a></li>
                             <li><a href="#">Privacy Policy</a></li>
                         </ul>
+                        </div>
                     </div>
-                    
+
                     <!-- 右侧链接 -->
                     <div class="col-md-4">
-                        <div style="padding-left: 80px;">
+                        <div class="footer-links-container">
                             <h3 class="links-title">More on MNTN</h3>
                             <ul class="bottom-links-list">
                                 <li><a href="#">The Team</a></li>

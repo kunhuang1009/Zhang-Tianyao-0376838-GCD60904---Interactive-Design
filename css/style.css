@@ -55,10 +55,47 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: transparent; /* 确保navbar本身也是透明的 */
+    position: relative;
+    width: 100%;
+}
+
+.navbar .container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    position: relative;
 }
 
 .logo {
     height: 50px;
+}
+
+/* Logo文字样式 */
+.navbar-brand {
+    background-color: transparent;
+    text-decoration: none;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.logo-text {
+    font-size: 48px;
+    font-weight: 700;
+    color: #1a7b85;
+    line-height: 0.9;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    display: block;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+.logo-text .second-line {
+    font-size: 48px;
+    display: block;
 }
 
 .navbar-nav {
@@ -74,6 +111,16 @@ body {
     background-color: rgba(26, 42, 54, 0.8); /* 只有中间导航部分有背景 */
     border-radius: 50px;
     padding: 10px 30px;
+    white-space: nowrap; /* 防止菜单项换行 */
+    z-index: 5;
+}
+
+.nav-center .navbar-nav {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .nav-link {
@@ -90,6 +137,8 @@ body {
 .nav-right {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
+    z-index: 10;
 }
 
 .account-link {
@@ -701,6 +750,11 @@ body {
     color: var(--accent-color);
 }
 
+/* 页脚链接容器 */
+.footer-links-container {
+    padding-left: 200px;
+}
+
 /* 页脚样式 */
 #footer {
     background-color: var(--primary-color);
@@ -770,6 +824,11 @@ body {
     
     .hiking-gear-section .section-number {
         font-size: 240px;
+    }
+
+    /* 页脚响应式 - 1200px */
+    .footer-links-container {
+        padding-left: 150px;
     }
 }
 
@@ -842,13 +901,62 @@ body {
     .hiking-gear-section .section-title {
         font-size: 36px;
     }
+
+    /* 页脚响应式 - 991px */
+    .footer-links-container {
+        padding-left: 100px;
+    }
 }
 
 @media (max-width: 767px) {
     :root {
         --max-content-width: 100%;
     }
-    
+
+    /* 导航栏响应式 - 767px - 保持相同布局 */
+    .navbar {
+        padding: 0 15px;
+    }
+
+    .logo-text {
+        font-size: 28px;
+        letter-spacing: -1px;
+    }
+
+    .logo-text .second-line {
+        font-size: 28px;
+    }
+
+    .nav-center {
+        padding: 5px 15px;
+        border-radius: 40px;
+        /* 确保中央导航始终居中 */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .nav-link {
+        margin: 0 8px;
+        font-size: 13px;
+    }
+
+    .account-link {
+        font-size: 13px;
+    }
+
+    .account-link i {
+        margin-right: 3px;
+    }
+
+    /* 确保三列布局保持不变 */
+    .navbar .container-fluid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
     .hero-title {
         font-size: 36px;
     }
@@ -915,4 +1023,157 @@ body {
     .hiking-gear-section .read-more-container {
         text-align: left;
     }
-} 
+
+    /* 页脚响应式 - 767px */
+    .footer-links-container {
+        padding-left: 0;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .explore-text {
+        text-align: center;
+    }
+}
+
+/* 超小屏幕响应式 - 480px */
+@media (max-width: 480px) {
+    /* 导航栏响应式 - 480px - 保持相同布局 */
+    .navbar {
+        padding: 0 10px;
+    }
+
+    .logo-text {
+        font-size: 22px;
+        letter-spacing: -1px;
+    }
+
+    .logo-text .second-line {
+        font-size: 22px;
+    }
+
+    .nav-center {
+        padding: 4px 12px;
+        border-radius: 35px;
+        /* 确保中央导航始终居中 */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .nav-link {
+        margin: 0 6px;
+        font-size: 12px;
+    }
+
+    .account-link {
+        font-size: 12px;
+    }
+
+    .account-link i {
+        margin-right: 2px;
+    }
+
+    /* 确保三列布局保持不变 */
+    .navbar .container-fluid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .welcome-text {
+        font-size: 20px;
+    }
+
+    /* 页脚响应式 - 480px */
+    .footer-links-container {
+        padding-left: 0;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .explore-text {
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .links-title {
+        font-size: 18px;
+    }
+}
+
+/* 极小屏幕响应式 - 360px */
+@media (max-width: 360px) {
+    /* 导航栏响应式 - 360px - 保持相同布局 */
+    .navbar {
+        padding: 0 8px;
+    }
+
+    .logo-text {
+        font-size: 18px;
+        letter-spacing: -0.5px;
+    }
+
+    .logo-text .second-line {
+        font-size: 18px;
+    }
+
+    .nav-center {
+        padding: 3px 10px;
+        border-radius: 30px;
+        /* 确保中央导航始终居中 */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .nav-link {
+        margin: 0 4px;
+        font-size: 11px;
+    }
+
+    .account-link {
+        font-size: 11px;
+    }
+
+    /* 确保三列布局保持不变 */
+    .navbar .container-fluid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .hero-title {
+        font-size: 24px;
+    }
+
+    .welcome-text {
+        font-size: 18px;
+    }
+
+    /* 页脚响应式 - 360px */
+    .footer-links-container {
+        padding-left: 0;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .explore-text {
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .links-title {
+        font-size: 16px;
+    }
+
+    .bottom-links-list a {
+        font-size: 14px;
+    }
+}
