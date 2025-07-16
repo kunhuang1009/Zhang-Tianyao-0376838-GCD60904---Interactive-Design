@@ -2,8 +2,14 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Summit Seekers - 登山服务</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1a2a36">
+    <title>Summit Seekers - 账户登录</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- 自定义CSS -->
@@ -207,6 +213,28 @@
 
             .register-btn {
                 margin-right: 10px;
+            }
+        }
+
+        /* Account页面移动端专用优化 */
+        @media screen and (max-width: 768px) {
+            .register-btn, .login-btn {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                touch-action: manipulation;
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                will-change: transform;
+            }
+
+            .login-container {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+                will-change: transform;
+            }
+
+            .form-input {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                touch-action: manipulation;
             }
         }
     </style>

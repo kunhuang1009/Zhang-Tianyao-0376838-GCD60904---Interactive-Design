@@ -1177,3 +1177,140 @@ body {
         font-size: 14px;
     }
 }
+
+/* 移动端设备专用适配 - iOS Safari 和 Android Chrome */
+@media screen and (max-width: 768px) {
+    /* 修复iOS Safari的视口问题 */
+    body {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* 修复iOS Safari的滚动问题 */
+    html, body {
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* 导航栏移动端优化 */
+    .navbar {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        will-change: transform;
+    }
+
+    .nav-center {
+        -webkit-transform: translateX(-50%) translateZ(0);
+        transform: translateX(-50%) translateZ(0);
+        will-change: transform;
+    }
+
+    /* 触摸优化 */
+    .nav-link, .account-link, .scroll-down, .read-more-btn, .read-more-link {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        touch-action: manipulation;
+        min-height: 44px; /* iOS推荐的最小触摸目标 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* 按钮触摸优化 */
+    button, .btn, .start-journey-btn, .register-btn, .login-btn {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-touch-callout: none;
+        min-height: 44px;
+        min-width: 44px;
+        touch-action: manipulation;
+    }
+
+    /* 输入框移动端优化 */
+    input, textarea, select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 0;
+        font-size: 16px; /* 防止iOS Safari缩放 */
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    /* 图片优化 */
+    img {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        will-change: transform;
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* 修复Android Chrome的视口单位问题 */
+    .hero-section, .about-hero-section, .login-section {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* 专门针对iOS设备的适配 */
+@supports (-webkit-touch-callout: none) {
+    .hero-section, .about-hero-section, .login-section {
+        height: -webkit-fill-available;
+        min-height: -webkit-fill-available;
+    }
+
+    /* iOS Safari状态栏适配 */
+    @media screen and (max-width: 768px) {
+        #header {
+            padding-top: env(safe-area-inset-top);
+        }
+
+        .hero-section {
+            padding-top: calc(env(safe-area-inset-top) + 80px);
+        }
+    }
+}
+
+/* 横屏模式适配 */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .hero-section, .about-hero-section, .login-section {
+        min-height: 100vh;
+        height: auto;
+        padding: 60px 0;
+    }
+
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .services-hero-title {
+        font-size: 32px;
+    }
+
+    .login-container {
+        padding: 30px 40px;
+        margin: 20px auto;
+    }
+}
+
+/* 高分辨率屏幕适配 (Retina显示屏) */
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+       screen and (min-resolution: 192dpi) {
+    /* 优化高分辨率屏幕的文字渲染 */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* 优化图片在高分辨率屏幕的显示 */
+    img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
