@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1200, user-scalable=yes">
     <title>Summit Seekers - 登山爱好者的指南</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -275,9 +275,80 @@
                 font-size: 12px;
             }
         }
+
+        /* 禁用移动端响应式，强制桌面端布局 */
+        @media screen and (max-width: 1199px) {
+            body {
+                min-width: 1200px !important;
+                overflow-x: auto !important;
+            }
+
+            .container, .container-fluid {
+                min-width: 1200px !important;
+                width: 1200px !important;
+            }
+
+            /* 禁用所有响应式样式 */
+            .services-hero-title {
+                font-size: 64px !important;
+            }
+
+            .services-section-number {
+                font-size: 280px !important;
+            }
+
+            .services-section-title {
+                font-size: 48px !important;
+            }
+
+            .services-section-description {
+                font-size: 16px !important;
+            }
+
+            .services-section-tag hr {
+                width: 70px !important;
+            }
+
+            .services-section-tag-text {
+                font-size: 14px !important;
+            }
+
+            .team-member-name {
+                font-size: 20px !important;
+            }
+
+            .team-member-role {
+                font-size: 18px !important;
+            }
+
+            .team-member-description {
+                font-size: 14px !important;
+            }
+
+            .team-member-content {
+                padding: 20px !important;
+            }
+
+            .scroll-down-services {
+                position: absolute !important;
+                bottom: -20px !important;
+                right: 0 !important;
+                display: inline-flex !important;
+            }
+
+            /* 强制背景图片样式 */
+            .shared-bg-container {
+                background-size: cover !important;
+                background-position: center center !important;
+                background-attachment: fixed !important;
+                background-repeat: no-repeat !important;
+                min-height: 100vh !important;
+                width: 1200px !important;
+            }
+        }
     </style>
 </head>
-<body>
+<body style="min-width: 1200px; overflow-x: auto;">
     <!-- 导航栏 -->
     <header id="header">
         <nav class="navbar">

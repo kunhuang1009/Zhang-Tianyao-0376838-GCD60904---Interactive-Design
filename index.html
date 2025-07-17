@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1200, user-scalable=yes">
     <title>Summit Seekers - 登山爱好者的指南</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -15,8 +15,73 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <style>
+        /* 禁用移动端响应式，强制桌面端布局 */
+        @media screen and (max-width: 1199px) {
+            body {
+                min-width: 1200px !important;
+                overflow-x: auto !important;
+            }
+
+            .container, .container-fluid {
+                min-width: 1200px !important;
+                width: 1200px !important;
+            }
+
+            /* 强制保持桌面端字体大小和布局 */
+            .hero-title {
+                font-size: 64px !important;
+            }
+
+            .welcome-text {
+                font-size: 36px !important;
+            }
+
+            .level-title {
+                font-size: 48px !important;
+            }
+
+            .section-title {
+                font-size: 48px !important;
+            }
+
+            .section-number {
+                font-size: 280px !important;
+            }
+
+            .navbar {
+                padding: 0 20px !important;
+            }
+
+            .logo-text {
+                font-size: 32px !important;
+            }
+
+            .nav-link {
+                margin: 0 15px !important;
+                font-size: 16px !important;
+            }
+
+            .account-link {
+                font-size: 16px !important;
+            }
+
+            .gear-content, .map-content {
+                padding: 60px 40px !important;
+            }
+
+            .explore-text {
+                font-size: 24px !important;
+            }
+
+            .links-title {
+                font-size: 24px !important;
+            }
+        }
+    </style>
+
 </head>
-<body>
+<body style="min-width: 1200px; overflow-x: auto;">
     <!-- 导航栏 -->
     <header id="header">
         <nav class="navbar">

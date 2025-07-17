@@ -23,7 +23,9 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    background-repeat: no-repeat;
     position: relative;
+    min-height: 100vh;
 }
 
 .shared-bg-container::before {
@@ -830,6 +832,13 @@ body {
     .footer-links-container {
         padding-left: 150px;
     }
+
+    /* 大屏幕背景图片优化 */
+    .shared-bg-container {
+        background-size: cover;
+        background-position: center center;
+        min-height: 100vh;
+    }
 }
 
 @media (max-width: 991px) {
@@ -905,6 +914,14 @@ body {
     /* 页脚响应式 - 991px */
     .footer-links-container {
         padding-left: 100px;
+    }
+
+    /* 中等屏幕背景图片优化 */
+    .shared-bg-container {
+        background-attachment: scroll; /* 中等屏幕也使用scroll */
+        background-size: cover;
+        background-position: center center;
+        min-height: 100vh;
     }
 }
 
@@ -1034,6 +1051,14 @@ body {
     .explore-text {
         text-align: center;
     }
+
+    /* 移动端背景图片优化 */
+    .shared-bg-container {
+        background-attachment: scroll; /* 移动端使用scroll而不是fixed */
+        background-size: cover;
+        background-position: center center;
+        min-height: 100vh;
+    }
 }
 
 /* 超小屏幕响应式 - 480px */
@@ -1105,6 +1130,14 @@ body {
     .links-title {
         font-size: 18px;
     }
+
+    /* 小屏幕背景图片优化 */
+    .shared-bg-container {
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center center;
+        min-height: 100vh;
+    }
 }
 
 /* 极小屏幕响应式 - 360px */
@@ -1175,5 +1208,24 @@ body {
 
     .bottom-links-list a {
         font-size: 14px;
+    }
+
+    /* 极小屏幕背景图片优化 */
+    .shared-bg-container {
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center center;
+        min-height: 100vh;
+    }
+}
+
+/* 超极小屏幕优化 - 320px */
+@media (max-width: 320px) {
+    .shared-bg-container {
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center center;
+        min-height: 100vh;
+        /* 确保在极小屏幕上背景图片完整显示 */
     }
 }
