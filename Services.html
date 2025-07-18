@@ -329,42 +329,8 @@
                 transform-origin: top center !important;
             }
 
-            /* 专门针对Services页面的背景图片 - 使用伪元素确保正确缩放 */
-            .services-bg-container {
-                background: none !important; /* 移除原有背景 */
-                position: relative !important;
-                overflow: hidden !important;
-            }
-
-            .services-bg-container::before {
-                content: '' !important;
-                position: absolute !important;
-                top: 0 !important;
-                left: 0 !important;
-                width: 1200px !important;
-                height: 100% !important;
-                background-image: url('images/EA.jpg') !important;
-                background-size: 1200px auto !important;
-                background-position: center top !important;
-                background-repeat: no-repeat !important;
-                z-index: -1 !important;
-                /* 确保背景图片随容器一起缩放 */
-                transform-origin: top center !important;
-            }
-
-            .services-bg-container::after {
-                content: '' !important;
-                position: absolute !important;
-                top: 0 !important;
-                left: 0 !important;
-                width: 1200px !important;
-                height: 100% !important;
-                background: rgba(0, 0, 0, 0.4) !important;
-                z-index: 0 !important;
-            }
-
-            /* 背景图片覆盖层也需要适配 - 但不应用于services-bg-container */
-            .shared-bg-container:not(.services-bg-container)::before {
+            /* 背景图片覆盖层也需要适配 */
+            .shared-bg-container::before {
                 content: '' !important;
                 position: absolute !important;
                 top: 0 !important;
@@ -448,7 +414,7 @@
         </div>
 
         <!-- 共享背景容器 - 新增 -->
-        <div class="shared-bg-container services-bg-container" style="background-image: url('images/EA.jpg');">
+        <div class="shared-bg-container" style="background-image: url('images/EA.jpg');">
             <!-- 英雄区域 -->
             <section class="hero-section" id="section1">
                 <div class="container" style="max-width: var(--max-content-width);">
