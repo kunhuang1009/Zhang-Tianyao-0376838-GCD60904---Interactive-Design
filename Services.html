@@ -276,80 +276,122 @@
             }
         }
 
-        /* 禁用移动端响应式，强制桌面端布局 */
+        /* 移动端等比例缩放样式 - 仅针对移动端，桌面端保持不变 */
+
+        /* 桌面端保持原样 - 不应用包装器效果 */
+        @media screen and (min-width: 1200px) {
+            .services-page-wrapper {
+                /* 桌面端移除包装器效果，恢复原始布局 */
+                width: auto;
+                margin: 0;
+                transform: none;
+                position: static;
+            }
+        }
+
+        /* 移动端缩放适配 - 只在小屏幕设备上生效 */
         @media screen and (max-width: 1199px) {
+            .services-page-wrapper {
+                width: 1200px;
+                margin: 0 auto;
+                transform: scale(calc(100vw / 1200));
+                transform-origin: top center;
+                position: relative;
+                /* 确保整个包装器包括背景都能正确缩放 */
+                overflow: hidden;
+            }
+
             body {
-                min-width: 1200px !important;
-                overflow-x: auto !important;
+                overflow-x: hidden;
+                margin: 0;
+                padding: 0;
             }
 
+            /* 确保所有容器保持固定宽度 */
             .container, .container-fluid {
-                min-width: 1200px !important;
                 width: 1200px !important;
+                max-width: 1200px !important;
+                min-width: 1200px !important;
+                padding-left: 15px !important;
+                padding-right: 15px !important;
             }
 
-            /* 禁用所有响应式样式 */
-            .services-hero-title {
-                font-size: 64px !important;
-            }
-
-            .services-section-number {
-                font-size: 280px !important;
-            }
-
-            .services-section-title {
-                font-size: 48px !important;
-            }
-
-            .services-section-description {
-                font-size: 16px !important;
-            }
-
-            .services-section-tag hr {
-                width: 70px !important;
-            }
-
-            .services-section-tag-text {
-                font-size: 14px !important;
-            }
-
-            .team-member-name {
-                font-size: 20px !important;
-            }
-
-            .team-member-role {
-                font-size: 18px !important;
-            }
-
-            .team-member-description {
-                font-size: 14px !important;
-            }
-
-            .team-member-content {
-                padding: 20px !important;
-            }
-
-            .scroll-down-services {
-                position: absolute !important;
-                bottom: -20px !important;
-                right: 0 !important;
-                display: inline-flex !important;
-            }
-
-            /* 强制背景图片样式 */
+            /* 确保背景图片正确显示 - 移动端优化 */
             .shared-bg-container {
-                background-size: cover !important;
+                width: 1200px !important;
+                background-size: cover !important; /* 保持cover以确保完全覆盖 */
                 background-position: center center !important;
-                background-attachment: fixed !important;
+                background-attachment: scroll !important; /* 移动端使用scroll而不是fixed */
                 background-repeat: no-repeat !important;
                 min-height: 100vh !important;
+                position: relative !important;
+                /* 确保背景图片随容器一起缩放 */
+                transform-origin: top center !important;
+            }
+
+            /* 专门针对Services页面的背景图片 - 使用伪元素确保正确缩放 */
+            .services-bg-container {
+                background: none !important; /* 移除原有背景 */
+                position: relative !important;
+                overflow: hidden !important;
+            }
+
+            .services-bg-container::before {
+                content: '' !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
                 width: 1200px !important;
+                height: 100% !important;
+                background-image: url('images/EA.jpg') !important;
+                background-size: 1200px auto !important;
+                background-position: center top !important;
+                background-repeat: no-repeat !important;
+                z-index: -1 !important;
+                /* 确保背景图片随容器一起缩放 */
+                transform-origin: top center !important;
+            }
+
+            .services-bg-container::after {
+                content: '' !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 1200px !important;
+                height: 100% !important;
+                background: rgba(0, 0, 0, 0.4) !important;
+                z-index: 0 !important;
+            }
+
+            /* 背景图片覆盖层也需要适配 - 但不应用于services-bg-container */
+            .shared-bg-container:not(.services-bg-container)::before {
+                content: '' !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                background: rgba(0, 0, 0, 0.4) !important;
+                z-index: 0 !important;
+            }
+
+            /* 禁用Bootstrap的响应式网格 */
+            .row {
+                margin-left: -15px !important;
+                margin-right: -15px !important;
+            }
+
+            .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-lg-6 {
+                width: auto !important;
+                flex: none !important;
             }
         }
     </style>
 </head>
-<body style="min-width: 1200px; overflow-x: auto;">
-    <!-- 导航栏 -->
+<body>
+    <!-- 页面包装器 - 用于移动端等比例缩放 -->
+    <div class="services-page-wrapper">
+        <!-- 导航栏 -->
     <header id="header">
         <nav class="navbar">
             <div class="container-fluid">
@@ -406,7 +448,7 @@
         </div>
 
         <!-- 共享背景容器 - 新增 -->
-        <div class="shared-bg-container" style="background-image: url('images/EA.jpg');">
+        <div class="shared-bg-container services-bg-container" style="background-image: url('images/EA.jpg');">
             <!-- 英雄区域 -->
             <section class="hero-section" id="section1">
                 <div class="container" style="max-width: var(--max-content-width);">
@@ -588,6 +630,7 @@
         <div id="footer-container"></div>
 
     </main>
+    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
